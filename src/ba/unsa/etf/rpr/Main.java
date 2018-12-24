@@ -30,17 +30,18 @@ public class Main {
     public static void main(String[] args) {
 
         GeografijaDAO.removeInstance();
-        File dbfile = new File("\\src\\baza.db");
+        File dbfile = new File("baza.db");
         if(dbfile.isFile()) System.out.print("OK");
         dbfile.delete();
+
         GeografijaDAO dao = GeografijaDAO.getInstance();
-        Grad bech = dao.glavniGrad("Austrija");
-        bech.setNaziv("Vienna");
+        /*Grad bech = dao.glavniGrad("Austrija");
+        bech.setNaziv("Wien");
         dao.izmijeniGrad(bech);
         gegrafija=dao;
-
         System.out.println("Gradovi su:\n" + ispisiGradove());
-        glavniGrad();
+        glavniGrad();*/
+
 
     }
 }
