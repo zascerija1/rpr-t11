@@ -12,12 +12,19 @@ class Grad {
     private SimpleStringProperty naziv = new SimpleStringProperty("");
     private SimpleObjectProperty<Drzava> drzava = new SimpleObjectProperty("");
     private SimpleIntegerProperty brojStanovnika = new SimpleIntegerProperty(0);
+
+    public int getId() {
+        return id;
+    }
+
+    private int id;
     public Grad() {}
 
-    public Grad(String a, Drzava n, int b) {
+    public Grad(String a, Drzava n, int b,int id) {
         naziv = new SimpleStringProperty(a);
         drzava = new SimpleObjectProperty(n);
         brojStanovnika = new SimpleIntegerProperty(b);
+        this.id=id;
     }
 
 

@@ -1,24 +1,31 @@
 package ba.unsa.etf.rpr;
 
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Drzava {
 
 
-
     private SimpleStringProperty naziv = new SimpleStringProperty("");
-    private SimpleStringProperty glavni_grad = new SimpleStringProperty("");
+    private SimpleObjectProperty<Grad> glavniGrad = new SimpleObjectProperty<>();
+    private int id;
+
+
 
     public Drzava() {}
 
-    public Drzava(String a, String n) {
+    public Drzava(String a, Grad n,int id) {
         naziv = new SimpleStringProperty(a);
-        glavni_grad = new SimpleStringProperty(n);
+        glavniGrad = new SimpleObjectProperty(n);
+        this.id=id;
 
     }
 
-
+    public int getId() {
+        return id;
+    }
 
     public String getNaziv() {
         return naziv.get();
@@ -32,18 +39,25 @@ public class Drzava {
         this.naziv.set(naziv);
     }
 
-    public String getGlavni_grad() {
-        return glavni_grad.get();
+    public Grad getGlavniGrad() {
+        return glavniGrad.get();
     }
 
-    public SimpleStringProperty glavni_gradProperty() {
-        return glavni_grad;
+    public SimpleObjectProperty<Grad> glavni_gradProperty() {
+        return glavniGrad;
     }
 
-    public void setGlavni_grad(String glavni_grad) {
-        this.glavni_grad.set(glavni_grad);
+    public void setGlavniGrad(Grad glavni_grad) {
+        this.glavniGrad.set(glavni_grad);
     }
 
-    public void setGlavniGrad(Grad sarajevo) {
+    public void setId(int id) {
+        this.id = id;
     }
+
+
+
+
+
+
 }

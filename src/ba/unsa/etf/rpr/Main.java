@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static GeografijaDAO gegrafija=GeografijaDAO.getInstance();
+
    public  static String ispisiGradove(){
         ArrayList<Grad> a=gegrafija.gradovi();
         String str="";
@@ -34,8 +35,8 @@ public class Main {
         if(dbfile.isFile()) System.out.print("OK");
         dbfile.delete();
 
-        GeografijaDAO dao = GeografijaDAO.getInstance();
-        /*Grad bech = dao.glavniGrad("Austrija");
+        /*GeografijaDAO dao = GeografijaDAO.getInstance();
+        Grad bech = dao.glavniGrad("Austrija");
         bech.setNaziv("Wien");
         dao.izmijeniGrad(bech);
         gegrafija=dao;
