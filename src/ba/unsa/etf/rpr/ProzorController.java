@@ -73,7 +73,7 @@ public class ProzorController {
             alert.setContentText("Uspješan unos!");
 
             Grad a=new Grad(naziv.getText(),null,Integer.parseInt(brojStanovnika.getText()),0);
-            Drzava m=new Drzava(drzava.getText(),a,1);
+            Drzava m=new Drzava(drzava.getText(),null,1);
             a.setDrzava(m);
 
             if(grad==null) Platform.runLater(()->{geo.dodajGrad(a);});

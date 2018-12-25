@@ -57,8 +57,10 @@ public class Drzava {
 
     @Override
     public String toString() {
+        String s=glavniGrad.get().getNaziv();
+        if(s.length()==0) s="Nepoznato";
         return "Naziv=" + naziv.get() +
-                ", Glavni grad=" + glavniGrad.get() ;
+                "\n Glavni grad=" +s;
 
     }
 }

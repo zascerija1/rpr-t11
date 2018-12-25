@@ -281,9 +281,13 @@ if(m==null) {
 
         Drzava m = nadjiDrzavu(grad.getDrzava().getNaziv());
 
-        if (m != null && grad.getDrzava().getNaziv().equals(m.getNaziv())) {
+
+        if (m != null ) {
             ident_d = m.getId();
-            if (grad.getDrzava().getGlavniGrad().getNaziv().equals(grad.getNaziv())) ident = m.getGlavniGrad().getId();
+            if (grad.getDrzava().getGlavniGrad()!=null && grad.getDrzava().getGlavniGrad().getNaziv().equals(grad.getNaziv())) ident = m.getGlavniGrad().getId();
+            else if(ident==m.getGlavniGrad().getId()){
+                ident++; id_grad++;
+            }
         }
 
         try {
@@ -292,21 +296,28 @@ if(m==null) {
             insertGrad.setInt(3, ident_d);
             insertGrad.setInt(4, grad.getBrojStanovnika());
             insertGrad.execute();
-            if (ident == id_grad + 1) id_grad++;
-            if (ident_d == id_drzava + 1) id_drzava++;
+            if (ident == id_grad + 1) id_grad=id_grad+1;
+            if (ident_d == id_drzava + 1) id_drzava=id_drzava+1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public void dodajDrzavu(Drzava drzava) {
+        int ident_g= id_grad + 1;
+        int ident_d = id_drzava + 1;
+        Grad k=nadjiGrad(drzava.getGlavniGrad().getNaziv());
+        if(k!=null){
+           ident_d=k.getDrzava().getId();
+           if(k.getNaziv().equals(drzava.getGlavniGrad().getNaziv())) ident_g=k.getId();
+        }
         try {
-            insertDrzava.setInt(1, id_drzava + 1);
+            insertDrzava.setInt(1, ident_d);
             insertDrzava.setString(2, drzava.getNaziv());
-            insertDrzava.setInt(3, id_grad + 1);
+            insertDrzava.setInt(3, ident_g);
             insertDrzava.execute();
-            id_drzava++;
-            id_grad++;
+            if (ident_g == id_grad + 1) id_grad=id_grad+1;
+            if (ident_d == id_drzava + 1) id_drzava=id_drzava+1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
