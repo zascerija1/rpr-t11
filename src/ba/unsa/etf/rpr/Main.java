@@ -65,11 +65,11 @@ public class Main extends Application {
         a.setGlavniGrad(d);
         d.setDrzava(a);
         dao.dodajDrzavu(a);
-        dao.dodajGrad(d);*/
+        dao.dodajGrad(d);
         System.out.println("Gradovi su:\n" + ispisiGradove());
         Grad g=gegrafija.nadjiGrad("Pariz");
-        System.out.println(g.toString());
-        //glavniGrad();
+        System.out.println(g.toString());*/
+        glavniGrad();
 
 
 
