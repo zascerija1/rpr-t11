@@ -29,19 +29,22 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
         GeografijaDAO.removeInstance();
         File dbfile = new File("baza.db");
-        if(dbfile.isFile()) System.out.print("OK");
         dbfile.delete();
 
-        /*GeografijaDAO dao = GeografijaDAO.getInstance();
-        Grad bech = dao.glavniGrad("Austrija");
-        bech.setNaziv("Wien");
-        dao.izmijeniGrad(bech);
-        gegrafija=dao;
+        GeografijaDAO dao = GeografijaDAO.getInstance();
+
+        Drzava a=new Drzava("Poljska", null,5);
+        Grad d=new Grad("Varsava", a, 939393,7);
+        a.setGlavniGrad(d);
+        d.setDrzava(a);
+        dao.dodajDrzavu(a);
+        dao.dodajGrad(d);
         System.out.println("Gradovi su:\n" + ispisiGradove());
-        glavniGrad();*/
+        glavniGrad();
+
+
 
 
     }
