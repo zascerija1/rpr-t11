@@ -12,15 +12,8 @@ public class GeografijaDAO {
     private ObservableList<Grad> gradovi = FXCollections.observableArrayList();
     private ObservableList<Drzava> drzave = FXCollections.observableArrayList();
     static private Connection conn = null;
-    private PreparedStatement stmt;
-    private PreparedStatement stmt1;
-    private PreparedStatement stmt2;
-    private PreparedStatement upitGradDrzava;
-    private PreparedStatement deleteDrzava;
-    private PreparedStatement deleteGrad = null;
     private PreparedStatement insertGrad = null;
     private PreparedStatement insertDrzava;
-    private PreparedStatement dajId;
     private int id_grad = 0;
     private int id_drzava = 0;
 
@@ -106,7 +99,7 @@ public class GeografijaDAO {
         Grad a = null;
 
         try {
-            upitGradDrzava = conn.prepareStatement("SELECT k.naziv, k.broj_stanovnika, d.naziv,k.id,d.id " +
+            PreparedStatement upitGradDrzava = conn.prepareStatement("SELECT k.naziv, k.broj_stanovnika, d.naziv,k.id,d.id " +
                     "FROM drzava d,grad k where k.drzava=d.id and k.id=d.glavni_grad and d.naziv=?");
             upitGradDrzava.setString(1, naziv);
             ResultSet rs = upitGradDrzava.executeQuery();
@@ -127,7 +120,7 @@ public class GeografijaDAO {
     public void izmijeniGrad(Grad grad) {
 
         try {
-            stmt2 = conn.prepareStatement("UPDATE grad set naziv=?, broj_stanovnika=? where id=?");
+            PreparedStatement stmt2 = conn.prepareStatement("UPDATE grad set naziv=?, broj_stanovnika=? where id=?");
 
             stmt2.setString(1, grad.getNaziv());
             stmt2.setInt(2, grad.getBrojStanovnika());
@@ -142,7 +135,7 @@ public class GeografijaDAO {
     public ArrayList<Grad> gradovi() {
         ArrayList<Grad> a = new ArrayList<>();
         try {
-            stmt = conn.prepareStatement("SELECT g.naziv, g.broj_stanovnika, d.naziv,g.id,d.id FROM grad g  join drzava d on  g.drzava=d.id  order by 2 DESC  ");
+            PreparedStatement stmt = conn.prepareStatement("SELECT g.naziv, g.broj_stanovnika, d.naziv,g.id,d.id FROM grad g  join drzava d on  g.drzava=d.id  order by 2 DESC  ");
 
             ResultSet rs = stmt.executeQuery();
 
@@ -163,7 +156,7 @@ public class GeografijaDAO {
     public void obrisiDrzavu(String drzava) {
         int id = 0;
         try {
-            dajId = conn.prepareStatement("select id from drzava where naziv=?");
+            PreparedStatement dajId = conn.prepareStatement("select id from drzava where naziv=?");
             dajId.setString(1, drzava);
             ResultSet rs = dajId.executeQuery();
             if (rs.next()) id = rs.getInt(1);
@@ -175,7 +168,7 @@ public class GeografijaDAO {
 
 
         try {
-            deleteGrad = conn.prepareStatement("delete from grad where drzava=?");
+            PreparedStatement deleteGrad = conn.prepareStatement("delete from grad where drzava=?");
             deleteGrad.setInt(1, id);
             deleteGrad.executeUpdate();
         } catch (SQLException e) {
@@ -183,7 +176,7 @@ public class GeografijaDAO {
         }
 
         try {
-            deleteDrzava = conn.prepareStatement("delete from drzava where naziv=?");
+            PreparedStatement deleteDrzava = conn.prepareStatement("delete from drzava where naziv=?");
             deleteDrzava.setString(1, drzava);
             deleteDrzava.execute();
         } catch (SQLException e) {
@@ -196,7 +189,7 @@ public class GeografijaDAO {
     public Drzava nadjiDrzavu(String drzava) {
         Drzava k = null;
         try {
-            stmt1 = conn.prepareStatement("SELECT  d.id , d.glavni_grad FROM drzava d where  d.naziv=?");
+            PreparedStatement stmt1 = conn.prepareStatement("SELECT  d.id , d.glavni_grad FROM drzava d where  d.naziv=?");
             stmt1.setString(1, drzava);
             ResultSet rs2 = stmt1.executeQuery();
             if (rs2.next()) {

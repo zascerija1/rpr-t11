@@ -33,7 +33,7 @@ public class Main {
         File dbfile = new File("baza.db");
         dbfile.delete();
 
-        GeografijaDAO dao = GeografijaDAO.getInstance();
+       GeografijaDAO dao = GeografijaDAO.getInstance();
 
         Drzava a=new Drzava("Poljska", null,5);
         Grad d=new Grad("Varsava", a, 939393,7);
