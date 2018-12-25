@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.GlavniController">
+   <top>
+      <VBox prefHeight="76.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="162.0" layoutY="38.0" text="Klikom na dugme odaberite željenu akciju!">
+                     <font>
+                        <Font name="System Italic" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="171.0" layoutY="4.0" text="Dobrodošli u bazu podataka!">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="168.0" layoutY="33.0" prefHeight="5.0" prefWidth="269.0" />
+               </children>
+            </AnchorPane>
+            <Separator prefWidth="200.0" />
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <GridPane gridLinesVisible="true" prefHeight="330.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="282.0" minWidth="10.0" prefWidth="189.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="401.0" minWidth="10.0" prefWidth="211.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="401.0" minWidth="10.0" prefWidth="180.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints />
+          <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="87.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="206.0" minHeight="10.0" prefHeight="112.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="206.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="unosDrzava" mnemonicParsing="false" onAction="#unesiDrzavu" text="Unos države" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Button fx:id="unosGrad" mnemonicParsing="false" onAction="#unesiGrad" text="Unos grada" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Button fx:id="promijeniGrad" mnemonicParsing="false" onAction="#izmijeniGrad" text="Promjena grada" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Button fx:id="nadjiDrzavu" mnemonicParsing="false" onAction="#nadjiDrzavuPoImenu" prefHeight="52.0" prefWidth="179.0" text="Pronalaženje države po imenu " textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Button fx:id="obrisiDrzavu" mnemonicParsing="false" onAction="#izbrisiDrzavu" text="Obriši državu" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Button fx:id="nadjiGrad" mnemonicParsing="false" onAction="#nadjiGrad" prefHeight="52.0" prefWidth="193.0" text="Pronalaženje grada po imenu" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Button fx:id="spisakGradova" mnemonicParsing="false" onAction="#izlistajGradove" text="Spisak gradova" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Button fx:id="nadjiDrzavuGr" mnemonicParsing="false" onAction="#nadjiDrzavuPoGlGradu" prefHeight="52.0" prefWidth="179.0" text="Pronalaženje glavnog grada države" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Button fx:id="exit" mnemonicParsing="false" onAction="#izadji" prefHeight="45.0" prefWidth="78.0" style="-fx-background-radius: 20;" text="EXIT" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <effect>
+            <ColorAdjust />
+         </effect>
+      </GridPane>
+   </bottom>
+</BorderPane>

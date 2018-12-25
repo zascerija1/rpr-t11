@@ -1,11 +1,32 @@
 package ba.unsa.etf.rpr;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+import static javafx.application.Application.launch;
+import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
+
+public class Main extends Application {
     public static GeografijaDAO gegrafija=GeografijaDAO.getInstance();
+
+    @Override
+    public void start(Stage primaryStage) throws IOException {
+
+
+        Parent root = FXMLLoader.load(getClass().getResource("glavniProzor.fxml"));
+        primaryStage.setTitle("Baza podataka");
+        primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        primaryStage.show();
+
+    }
 
    public  static String ispisiGradove(){
         ArrayList<Grad> a=gegrafija.gradovi();
@@ -32,6 +53,10 @@ public class Main {
         GeografijaDAO.removeInstance();
         File dbfile = new File("baza.db");
         dbfile.delete();
+        launch(args);
+        /*GeografijaDAO.removeInstance();
+        File dbfile = new File("baza.db");
+        dbfile.delete();
 
        GeografijaDAO dao = GeografijaDAO.getInstance();
 
@@ -40,9 +65,11 @@ public class Main {
         a.setGlavniGrad(d);
         d.setDrzava(a);
         dao.dodajDrzavu(a);
-        dao.dodajGrad(d);
+        dao.dodajGrad(d);*/
         System.out.println("Gradovi su:\n" + ispisiGradove());
-        glavniGrad();
+        Grad g=gegrafija.nadjiGrad("Pariz");
+        System.out.println(g.toString());
+        //glavniGrad();
 
 
 

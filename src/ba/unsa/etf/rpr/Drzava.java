@@ -55,9 +55,10 @@ public class Drzava {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Naziv=" + naziv.get() +
+                ", Glavni grad=" + glavniGrad.get() ;
 
-
-
-
-
+    }
 }
