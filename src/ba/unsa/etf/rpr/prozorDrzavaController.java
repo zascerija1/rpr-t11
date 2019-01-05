@@ -11,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
+import java.util.ResourceBundle;
 
 public class prozorDrzavaController {
     public TextField naziv;
@@ -25,20 +26,23 @@ public class prozorDrzavaController {
 
 
     public void submit(ActionEvent actionEvent) {
+        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
         if (greske.containsValue(true) || (!greske.containsKey(naziv) || (!greske.containsKey(glavniGrad)))) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("POGREŠAN UNOS");
-            if (greske.containsValue(true)) alert.setHeaderText("Neispravni podaci");
-            else alert.setHeaderText("Podaci nisu upisani!");
-            alert.setContentText("Unesite ponovo!");
+            alert.setTitle(bundle.getString("pogr_unos"));
+            if (greske.containsValue(true)) alert.setHeaderText(bundle.getString("neispr_podaci"));
+            else alert.setHeaderText(bundle.getString("nepot_podaci"));
+            alert.setContentText(bundle.getString("unos_ponovo"));
 
             alert.showAndWait();
+
+
         } else {
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Insert ");
-            alert.setHeaderText("Podaci o državi zapisani");
-            alert.setContentText("Uspješan unos!");
+            alert.setTitle(bundle.getString("dod"));
+            alert.setHeaderText(bundle.getString("zapis_uspj"));
+            alert.setContentText(bundle.getString("uspj"));
 
             Drzava a=new Drzava(naziv.getText(),null,1);
             Grad b=new Grad(glavniGrad.getText(),a,1,1);

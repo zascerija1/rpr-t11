@@ -31,7 +31,6 @@
     <index id="12" parent="6" name="sqlite_autoindex_drzava_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="13" parent="6">
@@ -63,7 +62,6 @@
     <index id="19" parent="7" name="sqlite_autoindex_grad_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="20" parent="7">

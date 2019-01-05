@@ -20,6 +20,6 @@
          </effect></ListView>
    </center>
    <top>
-      <Label text="Naziv grada (Naziv države) - Broj stanovnika" BorderPane.alignment="CENTER" />
+      <Label text="%naziv_grad_br" BorderPane.alignment="CENTER" />
    </top>
 </BorderPane>

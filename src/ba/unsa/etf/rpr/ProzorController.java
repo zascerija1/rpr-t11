@@ -1,8 +1,6 @@
 package ba.unsa.etf.rpr;
 
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -12,13 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 
 public class ProzorController {
 
@@ -28,6 +21,7 @@ public class ProzorController {
     public TextField brojStanovnika;
     private GeografijaDAO geo=GeografijaDAO.getInstance();
     Grad grad;
+    ResourceBundle bundle = ResourceBundle.getBundle("Translation");
 
     HashMap<Control, Boolean> greske = new HashMap<>();
 
@@ -59,18 +53,18 @@ public class ProzorController {
     public void submit(ActionEvent actionEvent) {
         if (greske.containsValue(true) || (!greske.containsKey(naziv)) || !greske.containsKey(drzava)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("POGREŠAN UNOS");
-            if (greske.containsValue(true)) alert.setHeaderText("Neispravni podaci");
-            else alert.setHeaderText("Nepotpuni podaci");
-            alert.setContentText("Unesite ponovo!");
+            alert.setTitle(bundle.getString("pogr_unos"));
+            if (greske.containsValue(true)) alert.setHeaderText(bundle.getString("neispr_podaci"));
+            else alert.setHeaderText(bundle.getString("nepot_podaci"));
+            alert.setContentText(bundle.getString("unos_ponovo"));
 
             alert.showAndWait();
         } else {
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Insert ");
-            alert.setHeaderText("Grad zapisan");
-            alert.setContentText("Uspješan unos!");
+            alert.setTitle(bundle.getString("dod"));
+            alert.setHeaderText(bundle.getString("zapis_uspj"));
+            alert.setContentText(bundle.getString("uspj"));
 
             Grad a=new Grad(naziv.getText(),null,Integer.parseInt(brojStanovnika.getText()),0);
             Drzava m=new Drzava(drzava.getText(),null,1);

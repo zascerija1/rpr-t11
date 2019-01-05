@@ -11,6 +11,9 @@ public class GeografijaDAO {
     private static GeografijaDAO ourInstance = null;
     private ObservableList<Grad> gradovi = FXCollections.observableArrayList();
     private ObservableList<Drzava> drzave = FXCollections.observableArrayList();
+
+
+
     static private Connection conn = null;
     private PreparedStatement insertGrad = null;
     private PreparedStatement insertDrzava;
@@ -20,6 +23,9 @@ public class GeografijaDAO {
     public static GeografijaDAO getInstance() {
         if (ourInstance == null) initialize();
         return ourInstance;
+    }
+    public static Connection getConn() {
+        return conn;
     }
 
     private static void initialize() {

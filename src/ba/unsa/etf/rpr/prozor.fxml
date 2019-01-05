@@ -15,9 +15,9 @@
 
 <GridPane gridLinesVisible="true" hgap="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" vgap="2.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <Label onKeyReleased="#unosNaziv" text="Naziv" GridPane.halignment="CENTER" />
-    <Label onKeyReleased="#unosDrzava" text="Država" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-    <Label onKeyReleased="#unosBrStanovnika" text="Broj Stanovnika" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+    <Label onKeyReleased="#unosNaziv" text="%naziv_grada" GridPane.halignment="CENTER" />
+    <Label onKeyReleased="#unosDrzava" text="%naziv" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+    <Label onKeyReleased="#unosBrStanovnika" text="%broj_st" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
     <TextField fx:id="naziv" onKeyReleased="#unosNaziv" GridPane.columnIndex="1">
       <GridPane.margin>
         <Insets left="10.0" right="10.0" fx:id="x1" />
@@ -25,7 +25,7 @@
     </TextField>
     <TextField fx:id="drzava" onKeyReleased="#unosDrzava" GridPane.columnIndex="1" GridPane.margin="$x1" GridPane.rowIndex="1" />
     <TextField fx:id="brojStanovnika" onKeyReleased="#unosBrStanovnika" GridPane.columnIndex="1" GridPane.margin="$x1" GridPane.rowIndex="2" />
-    <Button id="POSALJI" fx:id="Posalji" mnemonicParsing="false" onAction="#submit" prefHeight="46.0" prefWidth="116.0" text="OK" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+    <Button id="POSALJI" fx:id="Posalji" mnemonicParsing="false" onAction="#submit" prefHeight="46.0" prefWidth="116.0" text="%ok" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
       <effect>
         <ColorAdjust hue="-0.04580152671755722" saturation="0.03053435114503822">
           <input>

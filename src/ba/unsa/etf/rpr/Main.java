@@ -9,9 +9,9 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
-import static javafx.application.Application.launch;
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class Main extends Application {
@@ -20,9 +20,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
+        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
 
-        Parent root = FXMLLoader.load(getClass().getResource("glavniProzor.fxml"));
-        primaryStage.setTitle("Baza podataka");
+
+        Parent root = FXMLLoader.load(getClass().getResource("glavniProzor.fxml"),bundle);
+        primaryStage.setTitle(bundle.getString("appname"));
         primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         primaryStage.show();
 
@@ -69,8 +71,7 @@ public class Main extends Application {
         System.out.println("Gradovi su:\n" + ispisiGradove());
         Grad g=gegrafija.nadjiGrad("Pariz");
         System.out.println(g.toString());*/
-        glavniGrad();
-
+        //glavniGrad();
 
 
 
