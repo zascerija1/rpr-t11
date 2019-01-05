@@ -8,9 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.sf.jasperreports.engine.JRException;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Optional;
@@ -278,5 +280,32 @@ public void alertPronadjen(Grad g){
         } catch (JRException e) {
             e.printStackTrace();
         }
+    }
+
+    public void spasi(ActionEvent actionEvent) {
+        Stage stage = new Stage();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Spasi xml");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text File", "*.pdf","*.docx", "*.xslx"));
+        fileChooser.setSelectedExtensionFilter( new FileChooser.ExtensionFilter("Text File", "*.pdf"));
+
+        fileChooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
+
+        File file = fileChooser.showSaveDialog(stage);
+        if(file!=null){
+            try {
+                new GradoviReport().saveAs(GeografijaDAO.getConn(),file.getAbsolutePath());
+            } catch (JRException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+        //doSave(file);
+
+
     }
 }
