@@ -308,4 +308,18 @@ public void alertPronadjen(Grad g){
 
 
     }
+
+    public void prikaziDrzavu(ActionEvent actionEvent) {
+        Drzava g=nadjiDrzavuDialog();
+        if(g!=null){
+            System.out.println(g.getId());
+            try {
+                new GradoviReport().showReportGradovi(GeografijaDAO.getConn(),g.getId()+"");
+            } catch (JRException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
 }

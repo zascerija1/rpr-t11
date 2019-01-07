@@ -59,6 +59,7 @@
           <menus>
             <Menu mnemonicParsing="false" text="%file">
               <items>
+                <MenuItem mnemonicParsing="false" onAction="#prikaziDrzavu" text="%prikazi_drzava" />
                 <MenuItem mnemonicParsing="false" onAction="#Prikazi" text="%prikazi" />
                 <MenuItem mnemonicParsing="false" onAction="#spasi" text="Save As" />
                 <MenuItem mnemonicParsing="false" text="%zatvori" />
